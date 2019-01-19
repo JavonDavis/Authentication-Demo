@@ -34,7 +34,7 @@ class LoginForm extends Component {
         const {email, password} = this.state;
         try {
             await firebase.auth().signInWithEmailAndPassword(email, password);
-            this.onLoginSuccess();
+            this.onLoginSuccess.bind(this);
         } catch (error) {
             console.log("Error logging in");
             console.log(error);
@@ -42,11 +42,11 @@ class LoginForm extends Component {
             // Attempt to make account for user
             try {
                 await firebase.auth().createUserWithEmailAndPassword(email, password);
-                this.onLoginSuccess();
+                this.onLoginSuccess.bind(this);
             } catch(error) {
                 console.log("Error creating account");
                 console.log(error);
-                this.onLoginFail();
+                this.onLoginFail.bind(this);
             }
 
         }

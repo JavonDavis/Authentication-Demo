@@ -40,7 +40,7 @@ class App extends Component {
             case true:
                 return (
                     <View style={logOutButtonStyle}>
-                        <Button>
+                        <Button onPress={() => firebase.auth().signOut()}>
                             Log Out
                         </Button>
                     </View>
